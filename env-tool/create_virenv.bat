@@ -1,7 +1,7 @@
 @REM @Author: wangqiang
 @REM @Date:   2020-02-15 10:23:51
 @REM @Last Modified by:   wqiang
-@REM Modified time: 2020-02-15 21:43:09
+@REM Modified time: 2020-02-15 23:36:56
 
 @echo off
 rem 文件设置为utf8,同时代码中显示切成utf-8代码页，保证文件在传输和显示过程一致，不会出现乱码
@@ -14,6 +14,8 @@ rem set "project_path=%~dp0"
 echo 当前目录:%cd%
 echo.
 :_set_virtualenv_path
+rem 重置变量，解决下次重入时不能正确识别默认目录
+set virtualenv_path=
 set /p virtualenv_path=请设置虚拟环境目录(默认为当前目录):
 if not defined virtualenv_path (set virtualenv_path=%cd%)
 if exist "%virtualenv_path%" (
@@ -68,6 +70,7 @@ pip install virtualenv && virtualenv  --no-site-packages -p %local_python_file% 
 
 :_is_test
 echo ****************step3:测试虚拟环境**********************************
+set is_test=
 set /p is_test=是否测试虚拟环境? [Y/N]:
 if /i '%is_test%'=='Y' goto _test_virtual
 if /i '%is_test%'=='N' exit
