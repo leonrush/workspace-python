@@ -1,32 +1,32 @@
-@REM @Author: wangqiang
+ï»¿@REM @Author: wangqiang
 @REM @Date:   2020-02-15 10:23:51
-@REM @Last Modified by:   wqiang
-@REM Modified time: 2020-02-15 17:20:39
-
-
+@REM @Last Modified by:   leonrush
+@REM Modified time: 2020-02-15 17:55:43
 
 @echo off
+rem æ–‡ä»¶è®¾ç½®ä¸ºutf8,åŒæ—¶ä»£ç ä¸­æ˜¾ç¤ºåˆ‡æˆutf-8ä»£ç é¡µï¼Œä¿è¯æ–‡ä»¶åœ¨ä¼ è¾“å’Œæ˜¾ç¤ºè¿‡ç¨‹ä¸€è‡´ï¼Œä¸ä¼šå‡ºç°ä¹±ç 
+chcp 65001 >nul
 setlocal enabledelayedexpansion
 
-echo ****************step1:ĞéÄâ»·¾³ÉèÖÃ**********************
+echo ****************step1:è™šæ‹Ÿç¯å¢ƒè®¾ç½®**********************
 
 rem set "project_path=%~dp0"
-echo µ±Ç°Ä¿Â¼:%cd%
+echo å½“å‰ç›®å½•:%cd%
 echo.
 :_set_virtualenv_path
-set /p virtualenv_path=ÇëÉèÖÃĞéÄâ»·¾³Ä¿Â¼:
+set /p virtualenv_path=è¯·è®¾ç½®è™šæ‹Ÿç¯å¢ƒç›®å½•:
 if not defined "%virtualenv_path%" (set virtualenv_path=%cd%)
 if exist "%virtualenv_path%" (
     echo.virtualenv_path=%virtualenv_path%
     ) else (
-    echo ´íÎó£ºÄ¿Â¼²»´æÔÚ£¬ÇëÖØĞÂÉèÖÃ£¡
+    echo é”™è¯¯ï¼šç›®å½•ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è®¾ç½®ï¼
     goto _set_virtualenv_path )
 
 echo.
 where python > .\python_path.txt
 for /f %%i in (.\python_path.txt) do (
     set path1=%%i
-    echo !path1!|findstr "python.exe$" >nul ||( echo python»·¾³²»ÕıÈ·£¬ÇëÈ·ÈÏ£¡ & echo !path1! & pause & exit )
+    echo !path1!|findstr "python.exe$" >nul ||( echo pythonç¯å¢ƒä¸æ­£ç¡®ï¼Œè¯·ç¡®è®¤ï¼ & echo !path1! & pause & exit )
     echo %%i
     %%i --version)
 
@@ -34,48 +34,48 @@ set /p python_path=<"python_path.txt"
 echo.
 :_set_local_path
 set local_python_path=
-set /p local_python_path=ÇëÉèÖÃ±¾µØpythonÂ·¾¶£º
+set /p local_python_path=è¯·è®¾ç½®æœ¬åœ°pythonè·¯å¾„ï¼š
 if not defined "%local_python_path%" (set /p local_python_path=<"python_path.txt")
 if exist "%local_python_path%" (
     echo.local_python_path:%local_python_path%
     ) else (
-    echo ´íÎó£ºÎÄ¼ş²»´æÔÚ£¬ÇëÖØĞÂÉèÖÃ£¡
+    echo é”™è¯¯ï¼šæ–‡ä»¶ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è®¾ç½®ï¼
     goto _set_local_path )
 
 :_set_virtualenv_name
 set virtualenv_name=
 echo.
-set /p virtualenv_name=ÇëÉèÖÃĞéÄâ»·¾³Ãû³Æ£º
+set /p virtualenv_name=è¯·è®¾ç½®è™šæ‹Ÿç¯å¢ƒåç§°ï¼š
 if defined virtualenv_name (
     echo.virtualenv_name=%virtualenv_name%
     ) else (
-    echo Ãû³Æ²»ÄÜÎª¿Õ£¬ÇëÖØĞÂÉèÖÃ£¡
+    echo åç§°ä¸èƒ½ä¸ºç©ºï¼Œè¯·é‡æ–°è®¾ç½®ï¼
     goto _set_virtualenv_name )
 
 
-echo ****************step2:¹¹½¨ĞéÄâ»·¾³%virtualenv_name%***********************
+echo ****************step2:æ„å»ºè™šæ‹Ÿç¯å¢ƒ%virtualenv_name%***********************
 set activate_path="%virtualenv_path%/%virtualenv_name%/Scripts/activate"
 if exist %activate_path% (
-    echo ĞéÄâ»·¾³ÒÑ´æÔÚ£¬python°æ±¾£º
+    echo è™šæ‹Ÿç¯å¢ƒå·²å­˜åœ¨ï¼Œpythonç‰ˆæœ¬ï¼š
     call "%virtualenv_path%/%virtualenv_name%/Scripts/python" --version
     echo.
-    set /p is_continue=ÊÇ·ñ¼ÌĞø?[Ä¬ÈÏY] [Y/N]:
+    set /p is_continue=æ˜¯å¦ç»§ç»­?[é»˜è®¤Y] [Y/N]:
     if /i '!is_continue!'=='N' ( goto _is_test )
     )
 
 cd /d "%virtualenv_path%"
-pip install virtualenv && virtualenv  --no-site-packages -p %local_python_path% %virtualenv_name% && echo ĞéÄâ»·¾³ÒÑ´´½¨.
+pip install virtualenv && virtualenv  --no-site-packages -p %local_python_path% %virtualenv_name% && echo è™šæ‹Ÿç¯å¢ƒå·²åˆ›å»º.
 
 :_is_test
-echo ****************step3:²âÊÔĞéÄâ»·¾³****************************
-set /p is_test=ÊÇ·ñ²âÊÔĞéÄâ»·¾³? [Y/N]:
+echo ****************step3:æµ‹è¯•è™šæ‹Ÿç¯å¢ƒ****************************
+set /p is_test=æ˜¯å¦æµ‹è¯•è™šæ‹Ÿç¯å¢ƒ? [Y/N]:
 if /i '%is_test%'=='Y' goto _test_virtual
 if /i '%is_test%'=='N' exit
-if /i not '%is_test%'=='N' if /i not '%is_test%'=='Y' echo.·Ç·¨ÊäÈë£¬ÇëÖØĞÂÊäÈë. && goto _is_test
+if /i not '%is_test%'=='N' if /i not '%is_test%'=='Y' echo.éæ³•è¾“å…¥ï¼Œè¯·é‡æ–°è¾“å…¥. && goto _is_test
 
 
 :_test_virtual
-start cmd /k "cd/d %virtualenv_path%/%virtualenv_name%/Scripts && activate && echo ĞéÄâ»·¾³ÒÑ¼¤»î. && python --version && pip list && deactivate && echo ĞéÄâ»·¾³ÒÑÍ£Ö¹."
-echo ²âÊÔÍê³É.
+start cmd /k "cd/d %virtualenv_path%/%virtualenv_name%/Scripts && activate && echo è™šæ‹Ÿç¯å¢ƒå·²æ¿€æ´». && python --version && pip list && deactivate && echo è™šæ‹Ÿç¯å¢ƒå·²åœæ­¢."
+echo æµ‹è¯•å®Œæˆ.
 pause
 
