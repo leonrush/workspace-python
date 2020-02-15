@@ -1,0 +1,58 @@
+﻿****************step1:虚拟环境设置**********************************
+当前目录:C:\Users\57580\OneDrive - XIXMAN\python-study-workspace\workspace\env
+
+请设置虚拟环境目录(默认为当前目录):
+virtualenv_path=C:\Users\57580\OneDrive - XIXMAN\python-study-workspace\workspace\env
+
+C:\Users\57580\Anaconda3\python.exe
+Python 3.7.6
+C:\Python27\python.exe
+Python 2.7.17
+
+请设置本地python(默认为第一个)：
+local_python_file:C:\Users\57580\Anaconda3\python.exe
+
+请设置虚拟环境名称：py-2
+virtualenv_name=py-2
+****************step2:构建虚拟环境**********************************
+虚拟环境已存在，python版本：
+Python 2.7.17
+
+是否继续?[默认Y] [Y/N]:n
+****************step3:测试虚拟环境**********************************
+是否测试虚拟环境? [Y/N]:y
+测试完成.
+Press any key to continue . . .
+PS C:\Users\57580\OneDrive - XIXMAN\python-study-workspace\workspace\env> .\create_virenv.bat
+****************step1:虚拟环境设置**********************************
+当前目录:C:\Users\57580\OneDrive - XIXMAN\python-study-workspace\workspace\env
+
+请设置虚拟环境目录(默认为当前目录):
+virtualenv_path=C:\Users\57580\OneDrive - XIXMAN\python-study-workspace\workspace\env
+
+C:\Users\57580\Anaconda3\python.exe
+Python 3.7.6
+C:\Python27\python.exe
+Python 2.7.17
+
+请设置本地python(默认为第一个)：C:\Python27\python.exe
+local_python_file:C:\Python27\python.exe
+
+请设置虚拟环境名称：py-2
+virtualenv_name=py-2
+****************step2:构建虚拟环境**********************************
+虚拟环境已存在，python版本：
+Python 2.7.17
+
+是否继续?[默认Y] [Y/N]:y
+Looking in indexes: http://pypi.douban.com/simple
+Requirement already satisfied: virtualenv in c:\users\57580\appdata\roaming\python\python37\site-packages (16.7.2)
+Running virtualenv with interpreter C:\Python27\python.exe
+Already using interpreter C:\Python27\python.exe
+New python executable in C:\Users\57580\ONEDRI~1\PYTHON~1\WORKSP~1\env\py-2\Scripts\python.exe
+Installing setuptools, pip, wheel...
+done.
+虚拟环境已创建.
+****************step3:测试虚拟环境**********************************
+是否测试虚拟环境? [Y/N]:n
+PS C:\Users\57580\OneDrive - XIXMAN\python-study-workspace\workspace\env>
